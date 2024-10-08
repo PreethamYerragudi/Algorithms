@@ -9,6 +9,8 @@ public class Percolation {
     }
 
     public void open(int row, int col) {
+        row = row - 1;
+        col = col - 1;
         if (grid[row][col] == 1) {
             return;
         } else {
@@ -17,7 +19,9 @@ public class Percolation {
     }
 
     public boolean isOpen(int row, int col) {
-        if (row >= grid.length || col >= grid[row].length || row < 0 || col < 0) {
+        row = row - 1;
+        col = col - 1;
+        if (row >= grid.length || col <= grid[row].length || row < 0 || col < 0) {
             throw new IllegalArgumentException();
         }
         if (grid[row][col] == 1) {
@@ -27,6 +31,8 @@ public class Percolation {
     }
 
     public boolean isFull(int row, int col) {
+        row = row - 1;
+        col = col - 1;
         if (row >= grid.length || col >= grid[row].length || row < 0 || col < 0) {
             throw new IllegalArgumentException();
         }
