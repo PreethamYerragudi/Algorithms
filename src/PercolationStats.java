@@ -1,6 +1,10 @@
+import edu.princeton.cs.algs4.StdRandom;
+import edu.princeton.cs.algs4.StdStats;
+
 public class PercolationStats {
     private Percolation percolation;
     private double[] thresholds;
+
     public PercolationStats(int n, int trials) {
         if (n <= 0 || trials <= 0) {
             throw new IllegalArgumentException();
@@ -9,34 +13,26 @@ public class PercolationStats {
         thresholds = new double[trials];
         for (int i = 0; i < trials; i++) {
             while (!percolation.percolates()) {
-                percolation.open((int) (Math.random() * n), (int) (Math.random() * n));
+                percolation.open(StdRandom.uniformInt(n), StdRandom.uniformInt(n));
             }
             thresholds[i] = percolation.numberOfOpenSites() / (n * n);
         }
     }
 
     public double mean() {
-        double ans = 0;
-        for(double d: thresholds) {
-            ans += d;
-        }
-        return ans / thresholds.length;
+        return StdStats.mean(thresholds);
     }
 
     public double stddev() {
-        double ans = 0;
-        for(double d: thresholds) {
-            ans += Math.pow(d - mean(), 2);
-        }
-        return Math.sqrt(ans/thresholds.length-1);
+        return StdStats.stddev(thresholds);
     }
 
     public double confidenceLo() {
-        return mean() - 1.96*stddev() / Math.sqrt(thresholds.length);
+        return mean() - 1.96 * stddev() / Math.sqrt(thresholds.length);
     }
 
     public double confidenceHi() {
-        return mean() + 1.96*stddev() / Math.sqrt(thresholds.length);
+        return mean() + 1.96 * stddev() / Math.sqrt(thresholds.length);
     }
 
     public static void main(String[] args) {
