@@ -1,7 +1,7 @@
 import java.util.Arrays;
 
 public class Percolation {
-    int[][] grid;
+    private int[][] grid;
     public Percolation(int n) {
         if (n <= 0) {
             throw new IllegalArgumentException();
