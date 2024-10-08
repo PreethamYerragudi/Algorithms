@@ -17,7 +17,7 @@ public class Percolation {
     }
 
     public boolean isOpen(int row, int col) {
-        if (row > grid.length || col > grid[row].length || row < 0 || col < 0) {
+        if (row >= grid.length || col >= grid[row].length || row < 0 || col < 0) {
             throw new IllegalArgumentException();
         }
         if (grid[row][col] == 1) {
@@ -27,7 +27,7 @@ public class Percolation {
     }
 
     public boolean isFull(int row, int col) {
-        if (row > grid.length || col > grid[row].length || row < 0 || col < 0) {
+        if (row >= grid.length || col >= grid[row].length || row < 0 || col < 0) {
             throw new IllegalArgumentException();
         }
         if (grid[row][col] == 0) {
