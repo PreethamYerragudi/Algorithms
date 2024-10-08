@@ -101,16 +101,4 @@ public class Percolation {
         return connected(arr, 0, grid.length*grid[0].length+1);
     }
 
-    public static void main(String[] args) {
-        Percolation percolation = new Percolation(10);
-        for(int i=0; i<10; i++) {
-            for(int j=0; j<10; j++) {
-                if(Math.random()>.8){
-                    percolation.open(i, j);
-                }
-            }
-        }
-        System.out.println(percolation.percolates());
-    }
-
 }
